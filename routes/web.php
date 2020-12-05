@@ -181,4 +181,12 @@ Route::get("polymanytomany",function(){ //
 //find object from database
 //$post=App\find(1)
 //$post=App\post::where("id",1)->get()
+//update
+//delete
+//$post->delete()softdelete
+//$post->forcedeleted()//pere
+//relation with tinker
+//$user->roles  ytl3 eh 3lakat l user da b role
 
+
+// CRUD is actually an acronym for describing the four different actions of data storage: Create, Read, Update and Delete
