@@ -36,17 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function post(){
-        return $this->hasOne("App\post");
-    }
+//    public function post(){
+//        return $this->hasOne("App\post");
+//    }
+    //oneto many
     public function posts(){
         return $this->hasmany("App\post");
     }
     //many to many
-    public function roles(){
-        return $this->belongsToMany("App\\role");
-    }
-    public function photos(){
-        return $this->morphMany("App\photo","imageable");
-    }
+//    public function roles(){
+//        return $this->belongsToMany("App\\role");
+//    }
+//    public function photos(){
+//        return $this->morphMany("App\photo","imageable");
+//    }
 }
