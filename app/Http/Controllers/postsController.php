@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostCreateRequest;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -39,8 +40,17 @@ class postsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest  $request)
     {
+        //validation
+//        $this->validate($request,[
+//            "title"=>"required|max:4",
+//
+//    ]);
+        //-------------how to make advanced validation
+        //any a3ml class mkan l request w a7ot feh l rules w ast5dmo
+
+
         //l rew mn l form bytb3t hna
 //        return $request->all(); //all the form data
         //all method to insert to db
@@ -78,6 +88,8 @@ class postsController extends Controller
     public function edit($id)
     {
         //
+        $post=post::findOrFail($id);
+        return view("posts.edit",compact("post"));
     }
 
     /**
@@ -90,6 +102,11 @@ class postsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post=post::findOrFail($id);
+        $post->title=$request->title;
+        $post->save();
+       return redirect("posts");
+
     }
 
     /**
