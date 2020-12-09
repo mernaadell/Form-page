@@ -3,8 +3,12 @@
 @section("content")
     {{--insert in db--}}
 {{--    <form method="post"action="/posts">--}}{{--da l urll bta3 method l store fe controller--}}
-    {!! Form::open(['method'=>"post",'action'=>"postsController@store"]) !!}
+    {!! Form::open(['method'=>"post",'action'=>"postsController@store","files"=>true]) !!}
         {{--lzam l name b esm l col elii ha7oto fe db--}}
+    <div class="form-group">
+        {!! Form::file('file',["class"=>"form-control"])  !!}
+
+    </div>
     <div class="form-group">
         {!! Form::label('title','Title:')  !!}
         {!! Form::text('title',null,['class'=>'form-control']) !!}

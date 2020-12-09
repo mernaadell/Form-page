@@ -42,6 +42,19 @@ class postsController extends Controller
      */
     public function store(PostCreateRequest  $request)
     {
+        //files
+
+       //in db
+        $input=$request->all();
+        if($file=$request->file('file')){
+            $name=$file->getClientOriginalName();
+            $file->move('images',$name);//make images folder and put
+            $post=new post();
+            $post->path=$name;
+            $post->title=$request->title;
+            $post->save();
+        }
+
         //validation
 //        $this->validate($request,[
 //            "title"=>"required|max:4",
@@ -120,3 +133,4 @@ class postsController extends Controller
         //
     }
 }
+

@@ -3,6 +3,7 @@ use App\post;
 use App\User;
 use App\country;
 use App\photo;
+use Carbon\Carbon;
 
 //
 ////Route::get('/', function ()  {//clasname:: function
@@ -195,3 +196,35 @@ use App\photo;
 */
 
 Route::resource("/posts","postsController");
+
+//dates with laravel
+Route::get("date",function(){
+    //regular php
+    $date=new DateTime('+1 week');
+    echo $date->format('m-d-y');
+    echo "<br";
+    //carben in laravel installation
+    //composer search carbon
+    echo Carbon::now();
+    echo Carbon::now()->diffForHumans();
+
+});
+//accessor
+//any a3ml manupliation 3la col b3d ma a5do mn database b y tre2a ana 3wzaha
+Route::get("getname",function(){
+    $user=user::find(1);
+    echo $user->name;
+});
+//mutator
+////any a3ml man ll col w b3den a3mlo set fe l db
+Route::get("setname",function(){
+    $user=user::find(1);
+     $user->name="mayar";
+     $user->save();
+});
+//query scope
+//any a3mal static method f l model w a7ot feha l query l kber w lma a7tago andy l method
+Route::get("queryscope",function(){
+    $user=user::latest()->get(["id"]);//anadeha kda
+    echo $user;
+});
