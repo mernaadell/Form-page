@@ -17,4 +17,7 @@ class post extends Model
     public function tags(){
         return $this->morphToMany("App\\tag","taggable");
    }
+   public function getPathAttribute($value){
+        return "/images/".$value;
+   }
 }
